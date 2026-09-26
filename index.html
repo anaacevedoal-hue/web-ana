@@ -1,1 +1,461 @@
-pagina web fea de ana
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Currículum de Ana Acevedo, estudiante de Data Science en la Universidad Complutense de Madrid.">
+	<title>Ana Acevedo | Data Science</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			color-scheme: light;
+			--paper: #eff7f2;
+			--ink: #193a2e;
+			--muted: #51685d;
+			--line: #cbdcd1;
+			--blue: #2f7259;
+			--lime: #a9e5c4;
+			--white: #f8fff9;
+			--display: "Space Grotesk", "Trebuchet MS", sans-serif;
+			--body: "DM Sans", "Segoe UI", sans-serif;
+		}
+
+		* { box-sizing: border-box; }
+
+		html { scroll-behavior: smooth; }
+
+		body {
+			margin: 0;
+			background: var(--paper);
+			color: var(--ink);
+			font-family: var(--body);
+			font-size: 16px;
+			line-height: 1.6;
+		}
+
+		a { color: inherit; }
+
+		a:focus-visible {
+			outline: 3px solid var(--blue);
+			outline-offset: 4px;
+		}
+
+		.page-shell {
+			width: min(1160px, calc(100% - 64px));
+			margin: 0 auto;
+		}
+
+		.site-header {
+			min-height: 82px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			border-bottom: 1px solid var(--line);
+		}
+
+		.wordmark {
+			display: inline-flex;
+			align-items: center;
+			gap: 12px;
+			text-decoration: none;
+			font-family: var(--display);
+			font-size: 15px;
+			font-weight: 700;
+		}
+
+		.monogram {
+			width: 38px;
+			height: 38px;
+			display: grid;
+			place-items: center;
+			background: var(--ink);
+			color: var(--lime);
+			font-size: 14px;
+		}
+
+		.site-nav { display: flex; gap: 30px; }
+
+		.site-nav a {
+			color: var(--muted);
+			font-size: 14px;
+			text-decoration: none;
+		}
+
+		.site-nav a:hover { color: var(--blue); }
+
+		.hero {
+			min-height: 535px;
+			display: grid;
+			grid-template-columns: 1.15fr 0.85fr;
+			align-items: center;
+			gap: 60px;
+			padding: 72px 0 78px;
+		}
+
+		.eyebrow {
+			margin: 0 0 22px;
+			color: var(--blue);
+			font-size: 12px;
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+		}
+
+		h1, h2, h3, p { margin-top: 0; }
+
+		h1 {
+			max-width: 650px;
+			margin-bottom: 20px;
+			font-family: var(--display);
+			font-size: 72px;
+			font-weight: 600;
+			letter-spacing: 0;
+			line-height: 0.98;
+		}
+
+		h1 span { color: var(--blue); }
+
+		.hero-lede {
+			max-width: 510px;
+			margin-bottom: 28px;
+			color: var(--muted);
+			font-size: 18px;
+			line-height: 1.65;
+		}
+
+		.hero-meta {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px 22px;
+			color: var(--ink);
+			font-size: 14px;
+			font-weight: 600;
+		}
+
+		.hero-meta span::before {
+			content: "";
+			width: 7px;
+			height: 7px;
+			display: inline-block;
+			margin: 0 9px 1px 0;
+			background: var(--lime);
+			border: 1px solid var(--ink);
+			border-radius: 50%;
+		}
+
+		.data-visual {
+			display: grid;
+			grid-template-rows: auto minmax(120px, 1fr) auto;
+			gap: 16px;
+			min-height: 345px;
+			padding: 26px;
+			overflow: hidden;
+			background-color: var(--blue);
+			background-image: radial-gradient(rgba(255,255,255,.22) 1px, transparent 1px);
+			background-size: 17px 17px;
+			color: var(--white);
+		}
+
+		.visual-label {
+			display: flex;
+			justify-content: space-between;
+			font-size: 11px;
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+		}
+
+		.chart {
+			min-height: 145px;
+			display: flex;
+			align-items: end;
+			gap: 12px;
+			border-bottom: 1px solid rgba(255,255,255,.7);
+		}
+
+		.chart span {
+			flex: 1;
+			min-width: 10px;
+			background: var(--lime);
+			transform-origin: bottom;
+			animation: rise 650ms ease-out both;
+		}
+
+		.chart span:nth-child(1) { height: 30%; animation-delay: 60ms; }
+		.chart span:nth-child(2) { height: 48%; animation-delay: 120ms; }
+		.chart span:nth-child(3) { height: 40%; animation-delay: 180ms; }
+		.chart span:nth-child(4) { height: 70%; animation-delay: 240ms; }
+		.chart span:nth-child(5) { height: 58%; animation-delay: 300ms; }
+		.chart span:nth-child(6) { height: 88%; animation-delay: 360ms; }
+		.chart span:nth-child(7) { height: 74%; animation-delay: 420ms; }
+
+		.visual-note {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			padding-top: 12px;
+			border-top: 1px solid rgba(255,255,255,.45);
+			color: var(--white);
+			font-family: var(--display);
+			font-size: 16px;
+			font-weight: 700;
+		}
+
+		.visual-note span:nth-child(2) { color: var(--lime); }
+
+		.section {
+			padding: 70px 0;
+			border-top: 1px solid var(--line);
+		}
+
+		.section-heading {
+			display: grid;
+			grid-template-columns: 0.8fr 1.2fr;
+			gap: 50px;
+			margin-bottom: 38px;
+		}
+
+		.section-index {
+			margin: 6px 0 0;
+			color: var(--blue);
+			font-size: 12px;
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+		}
+
+		h2 {
+			margin-bottom: 12px;
+			font-family: var(--display);
+			font-size: 38px;
+			font-weight: 600;
+			letter-spacing: 0;
+			line-height: 1.12;
+		}
+
+		.section-intro {
+			max-width: 610px;
+			margin-bottom: 0;
+			color: var(--muted);
+		}
+
+		.competency-list {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			column-gap: 54px;
+		}
+
+		.competency {
+			display: grid;
+			grid-template-columns: 44px 1fr;
+			gap: 16px;
+			padding: 24px 0;
+			border-top: 1px solid var(--line);
+		}
+
+		.competency-number {
+			color: var(--blue);
+			font-family: var(--display);
+			font-size: 14px;
+			font-weight: 600;
+		}
+
+		.competency h3, .education h3 {
+			margin-bottom: 7px;
+			font-family: var(--display);
+			font-size: 19px;
+			font-weight: 600;
+			line-height: 1.3;
+		}
+
+		.competency p, .education p {
+			margin-bottom: 0;
+			color: var(--muted);
+			font-size: 14px;
+		}
+
+		.education {
+			display: grid;
+			grid-template-columns: 0.8fr 1.2fr;
+			gap: 50px;
+			align-items: start;
+		}
+
+		.education-entry {
+			padding: 0 0 0 24px;
+			border-left: 3px solid var(--lime);
+		}
+
+		.education-entry .institution {
+			margin-bottom: 8px;
+			color: var(--blue);
+			font-size: 14px;
+			font-weight: 700;
+		}
+
+		.closing {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 30px;
+			padding: 32px 0 42px;
+			border-top: 1px solid var(--line);
+		}
+
+		.closing p { margin: 0; color: var(--muted); font-size: 14px; }
+		.closing strong { color: var(--ink); font-family: var(--display); font-size: 16px; }
+
+		@keyframes rise {
+			from { transform: scaleY(0); }
+			to { transform: scaleY(1); }
+		}
+
+		@media (max-width: 760px) {
+			.page-shell { width: min(100% - 40px, 560px); }
+			.site-header { min-height: 72px; }
+			.site-nav { gap: 16px; }
+			.site-nav a { font-size: 13px; }
+			.hero {
+				min-height: 0;
+				grid-template-columns: 1fr;
+				gap: 38px;
+				padding: 66px 0 56px;
+			}
+			h1 { max-width: 480px; font-size: 54px; }
+			.hero-lede { font-size: 16px; }
+			.data-visual { min-height: 290px; }
+			.chart { min-height: 125px; }
+			.section { padding: 54px 0; }
+			.section-heading, .education { grid-template-columns: 1fr; gap: 18px; }
+			.section-heading { margin-bottom: 26px; }
+			h2 { font-size: 32px; }
+		}
+
+		@media (max-width: 480px) {
+			.page-shell { width: calc(100% - 32px); }
+			.wordmark { gap: 8px; font-size: 13px; }
+			.monogram { width: 34px; height: 34px; }
+			.site-nav { gap: 12px; }
+			.site-nav a { font-size: 12px; }
+			h1 { font-size: 46px; }
+			.hero-meta { display: grid; gap: 8px; }
+			.data-visual { min-height: 260px; padding: 20px; }
+			.chart { gap: 8px; min-height: 110px; }
+			.visual-note { font-size: 15px; }
+			.competency-list { grid-template-columns: 1fr; }
+			.closing { align-items: flex-start; flex-direction: column; gap: 8px; }
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			*, *::before, *::after {
+				scroll-behavior: auto !important;
+				animation-duration: 0.01ms !important;
+				animation-iteration-count: 1 !important;
+			}
+		}
+
+		@media print {
+			body { background: #fff; }
+			.site-nav { display: none; }
+			.page-shell { width: 100%; }
+			.hero { min-height: auto; padding: 40px 0; }
+			.data-visual { print-color-adjust: exact; }
+			.section { padding: 32px 0; }
+		}
+	</style>
+</head>
+<body>
+	<div class="page-shell">
+		<header class="site-header">
+			<a class="wordmark" href="#inicio" aria-label="Ana Acevedo, inicio">
+				<span class="monogram" aria-hidden="true">AA</span>
+				<span>Ana Acevedo</span>
+			</a>
+			<nav class="site-nav" aria-label="Navegación principal">
+				<a href="#competencias">Competencias</a>
+				<a href="#formacion">Formación</a>
+			</nav>
+		</header>
+
+		<main>
+			<section class="hero" id="inicio" aria-labelledby="hero-title">
+				<div>
+					<p class="eyebrow">Currículum · Data Science</p>
+					<h1 id="hero-title">Hola, soy<br><span>Ana Acevedo.</span></h1>
+					<p class="hero-lede">Estudiante de Data Science en la Universidad Complutense de Madrid. Me interesa encontrar patrones, hacer buenas preguntas y convertir datos en ideas útiles.</p>
+					<div class="hero-meta">
+						<span>Universidad Complutense de Madrid</span>
+						<span>Madrid, España</span>
+					</div>
+				</div>
+				<div class="data-visual" role="img" aria-label="Gráfico abstracto de barras que representa el análisis de datos">
+					<div class="visual-label"><span>Mirar los datos</span><span>01 / 04</span></div>
+					<div class="chart" aria-hidden="true">
+						<span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+					</div>
+					<div class="visual-note" aria-hidden="true"><span>Datos</span><span>→</span><span>Ideas</span></div>
+				</div>
+			</section>
+
+			<section class="section" id="competencias" aria-labelledby="competencias-title">
+				<div class="section-heading">
+					<p class="section-index">01 / Lo que estoy desarrollando</p>
+					<div>
+						<h2 id="competencias-title">Competencias</h2>
+						<p class="section-intro">Una base analítica y técnica para abordar problemas con método, curiosidad y atención a cómo se comunican los resultados.</p>
+					</div>
+				</div>
+				<div class="competency-list">
+					<article class="competency">
+						<span class="competency-number">01</span>
+						<div>
+							<h3>Análisis de datos</h3>
+							<p>Exploración, limpieza y organización de datos para detectar patrones y plantear preguntas relevantes.</p>
+						</div>
+					</article>
+					<article class="competency">
+						<span class="competency-number">02</span>
+						<div>
+							<h3>Programación</h3>
+							<p>Uso de herramientas como Python y SQL para preparar, consultar y analizar conjuntos de datos.</p>
+						</div>
+					</article>
+					<article class="competency">
+						<span class="competency-number">03</span>
+						<div>
+							<h3>Estadística y modelado</h3>
+							<p>Fundamentos estadísticos y aprendizaje automático para estudiar relaciones y evaluar modelos.</p>
+						</div>
+					</article>
+					<article class="competency">
+						<span class="competency-number">04</span>
+						<div>
+							<h3>Visualización y comunicación</h3>
+							<p>Presentación clara de hallazgos mediante gráficos y explicaciones adaptadas a cada audiencia.</p>
+						</div>
+					</article>
+				</div>
+			</section>
+
+			<section class="section education" id="formacion" aria-labelledby="formacion-title">
+				<div>
+					<p class="section-index">02 / Formación</p>
+					<h2 id="formacion-title">Aprender para entender mejor.</h2>
+				</div>
+				<article class="education-entry">
+					<p class="institution">Universidad Complutense de Madrid</p>
+					<h3>Estudios de Data Science</h3>
+					<p>Formación en análisis de datos, programación, estadística y técnicas de aprendizaje automático.</p>
+				</article>
+			</section>
+		</main>
+
+		<footer class="closing">
+			<strong>Ana Acevedo</strong>
+			<p>Data Science · Universidad Complutense de Madrid</p>
+		</footer>
+	</div>
+</body>
+</html>
